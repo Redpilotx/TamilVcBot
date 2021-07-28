@@ -270,12 +270,12 @@ async def skip_track(client, m: Message):
 
 @Client.on_message(main_filter
                    & self_or_contact_filter
-                   & filters.regex("^!join$"))
+                   & filters.regex("^/join$"))
 async def join_group_call(client, m: Message):
     group_call = mp.group_call
     group_call.client = client
     if group_call.is_connected:
-        await m.reply_text(f"{emoji.ROBOT} already joined a voice chat")
+        await m.reply_text(f"{emoji.ROBOT} na already mela vc ki vanta")
         return
     await group_call.start(m.chat.id)
     await m.delete()
@@ -284,7 +284,7 @@ async def join_group_call(client, m: Message):
 @Client.on_message(main_filter
                    & self_or_contact_filter
                    & current_vc
-                   & filters.regex("^!leave$"))
+                   & filters.regex("^/leave$"))
 async def leave_voice_chat(client, m: Message):
     group_call = mp.group_call
     mp.playlist.clear()
